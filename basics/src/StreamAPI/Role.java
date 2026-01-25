@@ -1,0 +1,24 @@
+package StreamAPI;
+
+public enum Role {
+    ADMIN,
+    USER,
+    MANAGER,
+    WRITER,
+    DIETITIAN,
+    BUSINESS_OWNER,
+    HOMEMAKER,
+    RETIRED,
+    STUDENT,
+    TEACHER,
+    DOCTOR,
+    JOURNALIST,
+    STORE_MANAGER,
+    SMALL_BUSINESS,
+    DEVELOPER,
+    HR,
+    MARKETING,
+    DEVOPS,
+    FINANCE,
+    PRODUCT
+}
