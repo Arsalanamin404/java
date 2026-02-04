@@ -1,12 +1,12 @@
 package com.app;
 
-import com.app.dao.UserDAO;
-import com.app.dao.implementation.UserDaoImpl;
+import com.app.dao.EmployeeDAO;
+import com.app.dao.implementation.EmployeeDaoImpl;
 
 public class MainApp {
     public static void main(String[] args) {
-        UserDAO userDAO = new UserDaoImpl();
+        EmployeeDAO employeeDAO = new EmployeeDaoImpl();
 
-        userDAO.findAll().forEach(user -> System.out.println(user.getName()));
+        employeeDAO.findAll().forEach(emp -> System.out.println(emp.getName().toUpperCase() + " earns ₹" + emp.getSalary() + " per month!"));
     }
 }

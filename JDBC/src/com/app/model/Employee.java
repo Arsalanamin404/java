@@ -1,15 +1,15 @@
 package com.app.model;
 
-public class User {
+public class Employee {
     private int id;
     private String name;
     private int age;
     private double salary;
 
-    public User() {
+    public Employee() {
     }
 
-    public User(String name, int age, double salary) {
+    public Employee(String name, int age, double salary) {
         this.name = name;
         this.age = age;
         this.salary = salary;

@@ -1,17 +1,17 @@
 package com.app.dao.implementation;
 
 import com.app.config.DBConnection;
-import com.app.dao.UserDAO;
-import com.app.model.User;
+import com.app.dao.EmployeeDAO;
+import com.app.model.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoImpl implements UserDAO {
+public class EmployeeDaoImpl implements EmployeeDAO {
     @Override
-    public int create(User user) {
-        String sql = "INSERT INTO users(name,age,salary) VALUES(?,?,?)";
+    public int create(Employee user) {
+        String sql = "INSERT INTO employees(name,age,salary) VALUES(?,?,?)";
         try (Connection con = DBConnection.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, user.getName());
@@ -26,9 +26,9 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public User findById(int id) {
-        String sql = "SELECT * FROM users WHERE ID = ?;";
-        User user = null;
+    public Employee findById(int id) {
+        String sql = "SELECT * FROM employees WHERE ID = ?;";
+        Employee user = null;
 
         try (Connection con = DBConnection.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                user = new User();
+                user = new Employee();
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setAge(rs.getInt("age"));
@@ -50,9 +50,9 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> findAll() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users;";
+    public List<Employee> findAll() {
+        List<Employee> users = new ArrayList<>();
+        String sql = "SELECT * FROM employees;";
 
         try (Connection con = DBConnection.connect();
              Statement st = con.createStatement();
@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDAO {
 
 
             while (rs.next()) {
-                User user = new User();
+                Employee user = new Employee();
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setAge(rs.getInt("age"));
@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public int deleteById(int id) {
-        String sql = "DELETE  FROM users WHERE ID=?";
+        String sql = "DELETE  FROM employees WHERE ID=?";
 
         try (Connection con = DBConnection.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
